@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  font-family: "Montserrat", sans-serif;
 }
 
 .App-logo {
@@ -35,4 +36,54 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.font-all {
+  font-family: "Montserrat", sans-serif;
+}
+
+.bg-home {
+  background-image: url(./assets/images/bg-home.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.very-small-txt {
+  font-size: 0.6em;
+}
+
+.homepage-main-txt {
+  font-size: 3.2em;
+}
+
+.homepage-divs {
+  padding: 0;
+  margin: 0;
+  float: left;
+  line-height: 1.1em;
+  font-weight: 500;
+}
+
+.homepage-main-cta-btn {
+  margin-right: 85%;
+}
+
+.homepage-admin-create-btn {
+  font-size: 0.25em;
+}
+
+.logo-text {
+  font-weight: 300;
+}
+
+.court-owner-txt {
+  font-weight: 500;
+}
+
+.homepage-width {
+  width: 100%;
+}
+
+.mt-20 {
+  margin-top: 20;
 }
