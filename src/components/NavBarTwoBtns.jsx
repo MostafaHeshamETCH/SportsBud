@@ -35,7 +35,7 @@ function NavBarTwoBtns({ btnTxt }) {
         <button className="focus:outline-none hover:underline mr-3 text-white very-small-txt btn-margin-r">
           SIGN IN
         </button>
-        <RoundedBtn txt={btnTxt} />
+        <RoundedBtn txt={btnTxt} bgColor={"bg-gray-100 text-gray-900 "} />
       </div>
     </div>
   );

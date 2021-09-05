@@ -1,11 +1,10 @@
 import React from "react";
 
-function RoundedBtn({ txt }) {
-  return (
-    <button className="bg-gray-100 border-0 btn-padding focus:outline-none hover:bg-gray-200 rounded-full text-gray-900 very-small-txt">
-      {txt}
-    </button>
-  );
+function RoundedBtn({ txt, bgColor }) {
+  const className =
+    bgColor +
+    "border-0 btn-padding focus:outline-none hover:bg-gray-200 rounded-full very-small-txt";
+  return <button className={className}>{txt}</button>;
 }
 
 export default RoundedBtn;
