@@ -46,14 +46,23 @@
   background-image: url(./assets/images/bg-home.png);
   background-size: cover;
   background-repeat: no-repeat;
+  padding-left: 3vh;
+  padding-right: 3vh;
+  padding-top: 1vh;
+}
+
+.screen-margin-all {
+  margin-left: 3vh;
+  margin-right: 3vh;
+  margin-top: 1vh;
 }
 
 .very-small-txt {
-  font-size: 0.6em;
+  font-size: 2vh;
 }
 
 .homepage-main-txt {
-  font-size: 3.2em;
+  font-size: 6vw;
 }
 
 .homepage-divs {
@@ -66,24 +75,57 @@
 
 .homepage-main-cta-btn {
   margin-right: 85%;
+  padding-left: 7vh;
+  padding-right: 7vh;
+  padding-top: 1.3vh;
+  padding-bottom: 1.3vh;
+  font-size: 2.5vh;
+  width: 20%;
+  height: 7vh;
 }
 
 .homepage-admin-create-btn {
-  font-size: 0.25em;
+  font-size: 3vh;
 }
 
 .logo-text {
   font-weight: 300;
+  font-size: 3vh;
 }
 
 .court-owner-txt {
   font-weight: 500;
+  font-size: 3vh;
 }
 
-.homepage-width {
+.homepage-social-media {
   width: 100%;
 }
 
 .mt-20 {
-  margin-top: 20;
+  margin-top: 20vh;
+}
+
+.btn-padding {
+  padding-left: 5vh;
+  padding-right: 5vh;
+  padding-top: 0.8vh;
+  padding-bottom: 0.8vh;
+}
+
+.btn-margin-r {
+  margin-right: 2.5vh;
+}
+
+.margin-top {
+  margin-top: 8vh;
+}
+
+.margin-top-big {
+  margin-top: 12vh;
+}
+
+.social-icon {
+  height: 6vh;
+  width: 6vh;
 }

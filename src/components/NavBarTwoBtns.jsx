@@ -1,11 +1,12 @@
 import React from "react";
+import RoundedBtn from "./RoundedBtn";
 
-function NavBar() {
+function NavBarTwoBtns({ btnTxt }) {
   return (
-    <div className="flex p-3 items-center flex-wrap flex-column justify-between mx-6 flex-auto">
+    <div className="flex p-3 items-center flex-wrap flex-column justify-between flex-auto">
       <div>
         <a href="/" className="text-white cursor-pointer logo-text">
-          <span className=" text-sm">SPORTSBUD</span>
+          <span>SPORTSBUD</span>
         </a>
       </div>
       <div className="text-gray-300">
@@ -31,15 +32,13 @@ function NavBar() {
         </nav>
       </div>
       <div>
-        <button className="focus:outline-none hover:underline mr-3 text-white very-small-txt">
+        <button className="focus:outline-none hover:underline mr-3 text-white very-small-txt btn-margin-r">
           SIGN IN
         </button>
-        <button className="bg-gray-100 border-0 py-1 px-5 focus:outline-none hover:bg-gray-200 rounded-full text-gray-900 very-small-txt">
-          SIGN UP
-        </button>
+        <RoundedBtn txt={btnTxt} />
       </div>
     </div>
   );
 }
 
-export default NavBar;
+export default NavBarTwoBtns;
