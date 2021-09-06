@@ -181,3 +181,74 @@
 .screen-max-width {
   max-width: 1200px;
 }
+
+/* Current Booking css  KORDY*/
+.currBookingsTitle{
+  font-size: 40px;
+  margin-left: 40px;
+}
+.bookingContainer{
+  padding: 20px;
+  border-radius: 60px;
+  background-color: #212121;
+  height: 250px;
+  margin: 40px;
+  color: white;
+  position: relative;
+  cursor: pointer;
+}
+.bookingName{
+  font-size: 45px;
+  margin-left: 30px;
+  font-weight: 400;
+}
+.courtNumber{
+  font-size: 35px;
+  margin-left: 30px;
+  font-weight: 300;
+}
+.location{
+  display: flex;
+  flex-direction: row;
+  position: absolute;
+  bottom: 0;
+  margin-bottom: 3vh;
+  margin-left: 4vh;
+  justify-content: center;
+  justify-items: center;
+  align-items: center;
+  white-space: nowrap;
+}
+.locationImg{
+  width: auto;
+  height: 2.5vh;
+  margin-right: 1vh;
+}
+ .locationName{
+  font-size: 25px;
+  font-weight: 12em;
+}
+.price{
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  font-size: 6vh;
+  margin-right: 6vh;
+  margin-bottom: 2vh;
+}
+.time{
+  display: flex;
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin-top: 2vh;
+  margin-right: 6vh;
+  font-size: 35px;
+}
+.clockImg{
+  margin-right: 2vh;
+  width: 3vw;
+  height: auto;
+  padding: 0;
+}
+
