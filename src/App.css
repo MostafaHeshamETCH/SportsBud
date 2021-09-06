@@ -129,3 +129,44 @@
   height: 6vh;
   width: 6vh;
 }
+/*brbr*/
+.wrapper {
+  margin-top: 65px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  flex-direction: row;
+  margin-top: 30px;
+}
+.flex-box {
+  width: 200px;
+  height: 200px;
+  border-radius: 30px;
+  margin-left: 60px;
+  margin-right: 90px;
+  margin-bottom: 65px;
+}
+.card {
+  position: relative;
+  text-align: center;
+  color: white;
+}
+.title {
+  position: absolute;
+  top: 8px;
+  left: 16px;
+}
+.courts {
+  position: absolute;
+  bottom: 8px;
+  left: 16px;
+}
+.imgg {
+  border-radius: 30px;
+}
+.choose-title {
+  margin-left: 95px;
+  margin-top: 30px;
+  font-family: Montserrat;
+  font-size: 43px;
+}
