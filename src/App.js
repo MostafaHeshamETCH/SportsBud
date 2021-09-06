@@ -1,10 +1,10 @@
 import "./App.css";
-import CurrBookingsPage from "./components/CurrBookingsPage";
+import Homepage from "./components/Homepage";
 
 function App() {
   return (
     <div>
-      <CurrBookingsPage />
+      <Homepage />
     </div>
   );
 }
