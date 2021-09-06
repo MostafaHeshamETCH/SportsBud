@@ -4,7 +4,8 @@ import Homepage from "./components/Homepage";
 function App() {
   return (
     <div>
-      <Homepage />
+      <Homepage/>
+      
     </div>
   );
 }
