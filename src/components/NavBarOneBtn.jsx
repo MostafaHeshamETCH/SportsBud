@@ -32,7 +32,10 @@ function NavBarOneBtn({ btnTxt }) {
         </nav>
       </div>
       <div>
-        <RoundedBtn txt={btnTxt} bgColor={"bg-gray-900 text-white "} />
+        <RoundedBtn
+          txt={btnTxt}
+          bgColor={"bg-gray-900 text-white hover:bg-gray-700 "}
+        />
       </div>
     </div>
   );
