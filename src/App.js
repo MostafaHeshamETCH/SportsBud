@@ -1,11 +1,11 @@
 import "./App.css";
 import CurrBookingsPage from "./components/CurrBookingsPage";
+import SportsTypeChoice from "./components/SportsTypeChoice";
 
 function App() {
   return (
     <div>
-      <Homepage/>
-      
+      <SportsTypeChoice/>
       <CurrBookingsPage />
     </div>
   );
