@@ -131,7 +131,7 @@
   height: 6vh;
   width: 6vh;
 }
-/*brbr*/
+/* SportsTypeChoice brbr*/
 .wrapper {
   display: flex;
   flex-wrap: wrap;
@@ -183,11 +183,11 @@
 }
 
 /* Current Booking css  KORDY*/
-.currBookingsTitle{
+.currBookingsTitle {
   font-size: 40px;
   margin-left: 40px;
 }
-.bookingContainer{
+.bookingContainer {
   padding: 20px;
   border-radius: 60px;
   background-color: #212121;
@@ -197,17 +197,17 @@
   position: relative;
   cursor: pointer;
 }
-.bookingName{
+.bookingName {
   font-size: 45px;
   margin-left: 30px;
   font-weight: 400;
 }
-.courtNumber{
+.courtNumber {
   font-size: 35px;
   margin-left: 30px;
   font-weight: 300;
 }
-.location{
+.location {
   display: flex;
   flex-direction: row;
   position: absolute;
@@ -219,16 +219,16 @@
   align-items: center;
   white-space: nowrap;
 }
-.locationImg{
+.locationImg {
   width: auto;
   height: 2.5vh;
   margin-right: 1vh;
 }
- .locationName{
+.locationName {
   font-size: 25px;
   font-weight: 12em;
 }
-.price{
+.price {
   position: absolute;
   bottom: 0;
   right: 0;
@@ -236,7 +236,7 @@
   margin-right: 6vh;
   margin-bottom: 2vh;
 }
-.time{
+.time {
   display: flex;
   position: absolute;
   top: 0;
@@ -245,10 +245,95 @@
   margin-right: 6vh;
   font-size: 35px;
 }
-.clockImg{
+.clockImg {
   margin-right: 2vh;
   width: 3vw;
   height: auto;
   padding: 0;
 }
+/*courts loactions css BrBr*/
+.flex-box2 {
+  width: 320px;
+  height: 320px;
+  border-radius: 50px;
+  margin-left: 10px;
+  margin-right: 50px;
+  background-color: #212121;
+}
+.location_courts {
+  font-size: 34px;
+  color: black;
+  font-weight: normal;
+  font-family: Montserrat;
+  margin-top: -112px;
+  margin-left: 106px;
+  margin-bottom: 55px;
+  margin-right: 55px;
+}
+.card2 {
+  position: relative;
+  text-align: center;
+  color: white;
+}
+.place_courts {
+  position: absolute;
+  margin-top: 37px;
+  font-size: 45px;
+  text-align: left;
+  margin-left: 6.5vh;
+  font-family: Montserrat;
+  line-height: 1;
+}
+.price_courts {
+  position: absolute;
+  top: 255px;
+  left: 75px;
+  font-size: 25px;
+  font-family: Montserrat;
+  font-weight: 450;
+}
+.locationImgBlack {
+  width: auto;
+  height: 4vh;
+  margin-left: 10vh;
+  margin-bottom: 72px;
+  margin-top: 10px;
+  margin-right: 20px;
+  align-content: center;
+}
+/*brbr 2*/
+.calender {
+  width: auto;
+  height: 4vh;
+  margin-bottom: -34px;
+  margin-left: 25px;
+}
 
+.slots-img {
+  width: auto;
+  height: 4vh;
+  margin-bottom: -34px;
+  margin-left: 95px;
+}
+.players-no-img {
+  width: auto;
+  height: 4vh;
+  margin-bottom: -34px;
+  margin-left: 35px;
+  margin-right: 5px;
+}
+.courts-title {
+  margin-left: 85px;
+  margin-top: 18px;
+  font-family: Montserrat;
+  font-size: 57px;
+  margin-bottom: 20px;
+}
+.coin-img {
+  width: auto;
+  height: 4vh;
+  position: absolute;
+  position: absolute;
+  top: 260px;
+  left: 36px;
+}
