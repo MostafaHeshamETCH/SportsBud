@@ -133,20 +133,21 @@
 }
 /*brbr*/
 .wrapper {
-  margin-top: 65px;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
   flex-direction: row;
   margin-top: 30px;
+  margin-left: 45px;
 }
 .flex-box {
-  width: 200px;
-  height: 200px;
-  border-radius: 30px;
-  margin-left: 60px;
-  margin-right: 90px;
-  margin-bottom: 65px;
+  width: 320px;
+  height: 320px;
+  border-radius: 50px;
+  margin-left: 10px;
+  margin-right: 50px;
+  margin-bottom: 48px;
+  justify-content: center;
 }
 .card {
   position: relative;
@@ -155,33 +156,38 @@
 }
 .title {
   position: absolute;
-  top: 8px;
-  left: 16px;
+  top: 40px;
+  left: 45px;
+  font-size: 38px;
+  font-family: Montserrat;
+  font-weight: 450;
 }
 .courts {
   position: absolute;
-  bottom: 8px;
-  left: 16px;
+  bottom: 33px;
+  left: 50px;
+  font-size: 19px;
+  font-family: Montserrat;
 }
 .imgg {
-  border-radius: 30px;
+  border-radius: 50px;
 }
 .choose-title {
-  margin-left: 95px;
-  margin-top: 30px;
+  margin-left: 58px;
+  margin-top: 12px;
   font-family: Montserrat;
-  font-size: 43px;
+  font-size: 57px;
 }
 .screen-max-width {
   max-width: 1200px;
 }
 
 /* Current Booking css  KORDY*/
-.currBookingsTitle{
+.currBookingsTitle {
   font-size: 40px;
   margin-left: 40px;
 }
-.bookingContainer{
+.bookingContainer {
   padding: 20px;
   border-radius: 60px;
   background-color: #212121;
@@ -191,17 +197,17 @@
   position: relative;
   cursor: pointer;
 }
-.bookingName{
+.bookingName {
   font-size: 45px;
   margin-left: 30px;
   font-weight: 400;
 }
-.courtNumber{
+.courtNumber {
   font-size: 35px;
   margin-left: 30px;
   font-weight: 300;
 }
-.location{
+.location {
   display: flex;
   flex-direction: row;
   position: absolute;
@@ -213,16 +219,16 @@
   align-items: center;
   white-space: nowrap;
 }
-.locationImg{
+.locationImg {
   width: auto;
   height: 2.5vh;
   margin-right: 1vh;
 }
- .locationName{
+.locationName {
   font-size: 25px;
   font-weight: 12em;
 }
-.price{
+.price {
   position: absolute;
   bottom: 0;
   right: 0;
@@ -230,7 +236,7 @@
   margin-right: 6vh;
   margin-bottom: 2vh;
 }
-.time{
+.time {
   display: flex;
   position: absolute;
   top: 0;
@@ -239,10 +245,9 @@
   margin-right: 6vh;
   font-size: 35px;
 }
-.clockImg{
+.clockImg {
   margin-right: 2vh;
   width: 3vw;
   height: auto;
   padding: 0;
 }
-
