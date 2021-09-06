@@ -6,7 +6,7 @@ function NavBarOneBtn({ btnTxt }) {
     <div className="flex p-3 items-center flex-wrap flex-column justify-between flex-auto screen-margin-all">
       <div>
         <a href="/" className="text-gray900 cursor-pointer logo-text">
-          <span className=" text-sm">SPORTSBUD</span>
+          <span>SPORTSBUD</span>
         </a>
       </div>
       <div className="text-gray-900">

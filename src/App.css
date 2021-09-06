@@ -46,6 +46,8 @@
   background-image: url(./assets/images/bg-home.png);
   background-size: cover;
   background-repeat: no-repeat;
+  height: 100vh;
+  width: 100vw;
   padding-left: 3vh;
   padding-right: 3vh;
   padding-top: 1vh;
@@ -58,7 +60,7 @@
 }
 
 .very-small-txt {
-  font-size: 2vh;
+  font-size: 1.8vh;
 }
 
 .homepage-main-txt {
@@ -169,4 +171,7 @@
   margin-top: 30px;
   font-family: Montserrat;
   font-size: 43px;
+}
+.screen-max-width {
+  max-width: 1200px;
 }
