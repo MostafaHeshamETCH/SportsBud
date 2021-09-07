@@ -309,7 +309,7 @@
 .locationImgBlack {
   width: auto;
   height: 4vh;
-  margin-left: 10vh;
+  margin-left: 9vh;
   margin-bottom: 72px;
   margin-top: 10px;
   margin-right: 20px;
@@ -333,11 +333,11 @@
   width: auto;
   height: 4vh;
   margin-bottom: -34px;
-  margin-left: 35px;
+  margin-left: 45px;
   margin-right: 5px;
 }
 .courts-title {
-  margin-left: 85px;
+  margin-left: 65px;
   margin-top: 18px;
   font-family: Montserrat;
   font-size: 57px;

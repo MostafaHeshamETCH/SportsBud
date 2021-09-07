@@ -4,7 +4,7 @@ import clockBlack from "../assets/images/clockBlack.png";
 import calendarBlack from "../assets/images/calenderBlack.png";
 function CourtsBar() {
   return (
-    <div className="border-nav ml-16 ">
+    <div className="border-nav ml-8 ">
       <div className="flex p-3 items-center flex-wrap flex-column justify-between flex-auto screen-margin-all border-2 border-black rounded-2xl divide-x divide-gray-900 divide-opacity-100 w-11/12">
         <div>
           <img className="calender" src={calendarBlack} />
@@ -28,7 +28,7 @@ function CourtsBar() {
           <img className="players-no-img" src={peopleBlack} />
           <a
             href="/"
-            className="text-gray900 cursor-pointer font-Montserrat text-3xl m-24 ml-20"
+            className="text-gray900 cursor-pointer font-Montserrat text-3xl m-24 ml-24"
           >
             <span># of Players</span>
           </a>

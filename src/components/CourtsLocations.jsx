@@ -4,7 +4,8 @@ import locationBlack from "../assets/images/locationBlack.png";
 import CourtsBar from "./CourtsBar";
 import coinWhite from "../assets/images/coinWhite.png";
 function CourtsLocations() {
-  const state = [
+  const { useState } = React;
+  const [myArray, updateMyArray] = useState([
     {
       id: 1,
       place: "SKY PADDLE",
@@ -31,7 +32,8 @@ function CourtsLocations() {
       price: "260 EGP/Hour",
       location: "Zayed City",
     },
-  ];
+  ]);
+
   return (
     <div className="main">
       <div>
@@ -40,7 +42,7 @@ function CourtsLocations() {
       <h2 className="courts-title">Paddle Courts</h2>
       <CourtsBar />
       <div className="wrapper">
-        {state.map((record, index) => {
+        {myArray.map((record, index) => {
           return (
             <div className="container2">
               <div className="flex-box2">

@@ -8,14 +8,15 @@ import volley from "../assets/images/volley.png";
 import handball from "../assets/images/handball.png";
 
 function SportsTypeChoice() {
-  const state = [
+  const { useState } = React;
+  const [myArray2, updateMyArray] = useState([
     { id: 1, title: "TENNIS", nocourts: "10 COURTS", img: tennis },
     { id: 2, title: "FOOTBALL", nocourts: "24 COURTS", img: football },
     { id: 3, title: "PADDLE", nocourts: "5 COURTS", img: paddle },
     { id: 4, title: "SQUASH", nocourts: "12 COURTS", img: squash },
     { id: 5, title: "VOLLEY", nocourts: "7 COURTS", img: volley },
     { id: 6, title: "HANDBALL", nocourts: "9 COURTS", img: handball },
-  ];
+  ]);
   return (
     <div className="main">
       <div>
@@ -23,7 +24,7 @@ function SportsTypeChoice() {
       </div>
       <h2 className="choose-title">Please choose a type</h2>
       <div className="wrapper">
-        {state.map((record) => {
+        {myArray2.map((record) => {
           const { title, nocourts, img } = record;
           return (
             <div className="flex-box">
