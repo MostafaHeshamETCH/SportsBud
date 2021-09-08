@@ -351,3 +351,36 @@
   top: 260px;
   left: 36px;
 }
+
+/* H's new options bar */
+.options-bar-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 25px;
+  border: 2.5px solid #171b21;
+  margin-left: 6vw;
+  margin-right: 6vw;
+  padding-left: 5vw;
+  padding-right: 5vw;
+}
+
+.options-bar-item {
+  padding-top: 1em;
+  padding-bottom: 1em;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  cursor: pointer;
+}
+
+.item-text {
+  padding-left: 1vw;
+  font-size: 1.5em;
+}
+
+.item-separator {
+  font-size: 1.5em;
+}

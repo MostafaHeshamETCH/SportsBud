@@ -1,15 +1,10 @@
 import "./App.css";
-import CurrBookingsPage from "./components/CurrBookingsPage";
-import SportsTypeChoice from "./components/SportsTypeChoice";
-import CourtsLocations from "./components/CourtsLocations";
-import Homepage from "./components/Homepage";
+import CourtsLocation from "./components/CourtsLocations";
 
 function App() {
   return (
     <div>
-      <CourtsLocations/>
-      
-      <Homepage />
+      <CourtsLocation />
     </div>
   );
 }
