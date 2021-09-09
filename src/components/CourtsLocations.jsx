@@ -3,6 +3,7 @@ import NavBarOneBtn from "./NavBarOneBtn";
 import locationBlack from "../assets/images/locationBlack.png";
 import CourtsBar from "./CourtsBar";
 import coinWhite from "../assets/images/coinWhite.png";
+import { Redirect } from "react-router";
 function CourtsLocations() {
   const { useState } = React;
   const [myArray] = useState([
@@ -10,30 +11,32 @@ function CourtsLocations() {
       id: 1,
       place: "SKY PADDLE",
       price: "320 EGP/Hour",
-      location: "New Cairo"
+      location: "New Cairo",
     },
     {
       id: 2,
       place: "ZOHOUR CLUB",
       price: "260 EGP/Hour",
-      location: "New Cairo"
+      location: "New Cairo",
     },
     { id: 3, place: "GO PADDLE", price: "260 EGP/Hour", location: "MAADI" },
     {
       id: 4,
       place: "HELLO PADDLE",
       price: "260 EGP/Hour",
-      location: "Nasr City"
+      location: "Nasr City",
     },
     { id: 5, place: "SUPER PADDLE", price: "260 EGP/Hour", location: "REHAB" },
     {
       id: 6,
       place: "HY^2O PADDLE",
       price: "260 EGP/Hour",
-      location: "Zayed City"
-    }
+      location: "Zayed City",
+    },
   ]);
-
+  /*function handleClick() {
+    return <Redirect to="/current-bookings"></Redirect>;
+  }*/
   return (
     <div className="main">
       <div>
@@ -64,7 +67,7 @@ function CourtsLocations() {
 
 function Card2(props) {
   const { place, price } = props.record;
-  const handleClick = e => {
+  const handleClick = (e) => {
     console.log("hi");
     e.preventDefault();
   };
