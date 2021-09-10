@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import RoundedBtn from "./RoundedBtn";
 /*added link instead of anchor tag*/
-function NavBarOneBtn({ btnTxt }) {
+function NavBarOneBtn({ btnTxt, clickMe }) {
   return (
     <div className="flex p-3 items-center flex-wrap flex-column justify-between flex-auto screen-margin-all">
       <div>
@@ -34,6 +34,7 @@ function NavBarOneBtn({ btnTxt }) {
       </div>
       <div>
         <RoundedBtn
+          onClick={clickMe}
           txt={btnTxt}
           bgColor={"bg-gray-900 text-white hover:bg-gray-700"}
         />

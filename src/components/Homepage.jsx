@@ -3,23 +3,31 @@ import fbLogo from "../assets/images/logo-facebook.png";
 import igLogo from "../assets/images/logo-instagram.png";
 import NavBarTwoBtns from "./NavBarTwoBtns";
 import useWindowDimensions from "../components/useWindowDimensions";
+import { useHistory } from "react-router-dom";
 
 function Homepage() {
   const { height } = useWindowDimensions();
 
   const bgFullHeightStyle = {
-    height: height
+    height: height,
   };
 
+  let history = useHistory();
+  const handleClick = () => {
+    history.push("/signup");
+  };
   return (
     <div className="bg-home font-all" style={bgFullHeightStyle}>
-      <NavBarTwoBtns btnTxt="SIGN UP" />
+      <NavBarTwoBtns btnTxt="SIGN UP" clickMe={handleClick} />
       <div className="flex flex-col text-white homepage-main-txt screen-margin-all margin-top-big">
         <div className=" homepage-divs">Book a</div>
         <div className=" homepage-divs">sports court</div>
         <div className=" homepage-divs">in seconds</div>
         <div className=" margin-top"></div>
-        <button className=" rounded-full hover:bg-gray-200 bg-white text-gray-900 btn-padding homepage-main-cta-btn">
+        <button
+          onClick={() => history.push("/signin")}
+          className=" rounded-full hover:bg-gray-200 bg-white text-gray-900 btn-padding homepage-main-cta-btn"
+        >
           VIEW ALL
         </button>
         <div className="flex flex-row margin-top-big flex-grow">

@@ -3,7 +3,8 @@ import NavBarOneBtn from "./NavBarOneBtn";
 import locationBlack from "../assets/images/locationBlack.png";
 import CourtsBar from "./CourtsBar";
 import coinWhite from "../assets/images/coinWhite.png";
-import { Redirect } from "react-router";
+import { useLocation } from "react-router-dom";
+
 function CourtsLocations() {
   const { useState } = React;
   const [myArray] = useState([
@@ -34,15 +35,15 @@ function CourtsLocations() {
       location: "Zayed City",
     },
   ]);
-  /*function handleClick() {
-    return <Redirect to="/current-bookings"></Redirect>;
-  }*/
+  //For Recieving title sent from the previous page
+  const location = useLocation();
+
   return (
     <div className="main">
       <div>
         <NavBarOneBtn btnTxt="BOOKINGS" />
       </div>
-      <h2 className="courts-title">Paddle Courts</h2>
+      <h2 className="courts-title">{location.state}</h2>
       <CourtsBar />
       <div className="wrapper">
         {myArray.map((record, index) => {

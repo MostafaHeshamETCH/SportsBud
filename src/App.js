@@ -6,6 +6,7 @@ import Homepage from "./components/Homepage";
 import SportsTypeChoice from "./components/SportsTypeChoice";
 import SignInPage from "./components/SignInPage";
 import About from "./components/About";
+import SignUpPage from "./components/SignUpPage";
 
 import {BrowserRouter as Router,Route,Switch} from 'react-router-dom';
 
@@ -31,6 +32,9 @@ function App() {
         </Route>
         <Route exact path="/courts-locations"> 
           <CourtsLocations />
+        </Route>
+        <Route exact path="/signup"> 
+          <SignUpPage />
         </Route>
       </Switch>
       

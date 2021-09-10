@@ -1,8 +1,11 @@
 import React from "react";
 import RoundedBtn from "./RoundedBtn";
 import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 /*added link instead of anchor tag*/
-function NavBarTwoBtns({ btnTxt }) {
+
+function NavBarTwoBtns({ btnTxt, clickMe }) {
+  let history = useHistory();
   return (
     <div className="flex p-3 items-center flex-wrap flex-column justify-between flex-auto">
       <div>
@@ -33,10 +36,14 @@ function NavBarTwoBtns({ btnTxt }) {
         </nav>
       </div>
       <div>
-        <button className="focus:outline-none hover:underline mr-3 text-white very-small-txt btn-margin-r">
+        <button
+          onClick={() => history.push("/signin")}
+          className="focus:outline-none hover:underline mr-3 text-white very-small-txt btn-margin-r"
+        >
           SIGN IN
         </button>
         <RoundedBtn
+          onClick={clickMe}
           txt={btnTxt}
           bgColor={"bg-gray-100 text-gray-900 hover:bg-gray-200 "}
         />
