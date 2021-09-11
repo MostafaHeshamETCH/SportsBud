@@ -10,7 +10,9 @@ function ForgotPass() {
   };
   return (
     <div className="main-body bg-home">
-      <div className=" signin-title">SPORTSBUD</div>
+      <a href="/" className=" signin-title">
+        SPORTSBUD
+      </a>
 
       <div className="sub-title">
         <div className="bodies">Forgot Password</div>
