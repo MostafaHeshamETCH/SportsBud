@@ -728,13 +728,13 @@
 }
 
 .field-width {
-  width: 28vw;
+  width: 32vw;
 }
 
 .phone-text-fields {
   border-radius: 20px;
-  width: 350px;
-  height: 30px;
+  width: 32vw;
+  height: 6.5vh;
   background-color: rgba(205, 205, 205, 0.3);
   border: 0px none;
   outline: none;
@@ -744,8 +744,8 @@
 .continue-button-field {
   font-family: Montserrat, ital;
   background-color: white;
-  border-radius: 20px;
-  width: 350px;
+  border-radius: 25px;
+  width: 32vw;
   border: 0px none;
   outline: none;
   padding: 10px;
@@ -754,7 +754,7 @@
   color: black;
   line-height: 10px;
   font-weight: 600;
-  height: 40px;
+  height: 6vh;
   margin-bottom: 50px;
   margin-top: 40px;
 }
