@@ -4,6 +4,7 @@ import locationBlack from "../assets/images/locationBlack.png";
 import CourtsBar from "./CourtsBar";
 import coinWhite from "../assets/images/coinWhite.png";
 import { useLocation } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 function CourtsLocations() {
   const { useState } = React;
@@ -37,15 +38,18 @@ function CourtsLocations() {
   ]);
   //For Recieving title sent from the previous page
   const location = useLocation();
-
+  let history = useHistory();
+  const handleClick = () => {
+    history.push("/current-bookings");
+  };
   return (
     <div className="main">
       <div>
-        <NavBarOneBtn btnTxt="BOOKINGS" />
+        <NavBarOneBtn btnTxt="BOOKINGS" clickMe={handleClick} />
       </div>
       <h2 className="courts-title">{location.state}</h2>
       <CourtsBar />
-      <div className="wrapper">
+      <div className="wrapperr">
         {myArray.map((record, index) => {
           return (
             <div className="container2">
@@ -73,7 +77,7 @@ function Card2(props) {
     e.preventDefault();
   };
   return (
-    <div className="card" onClick={handleClick}>
+    <div className="cardd" onClick={handleClick}>
       <h2 className="place_courts">{place}</h2>
       <h2 className="price_courts">{price}</h2>
       <img className="coin-img" src={coinWhite} alt="coin icon" />

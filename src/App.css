@@ -146,7 +146,7 @@
   width: auto;
 }
 /* SportsTypeChoice brbr*/
-.wrapper {
+.wrapperr {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
@@ -154,7 +154,7 @@
   margin-top: 30px;
   margin-left: 45px;
 }
-.flex-box {
+.flex-boxx {
   width: 320px;
   height: 320px;
   border-radius: 50px;
@@ -163,12 +163,12 @@
   margin-bottom: 48px;
   justify-content: center;
 }
-.card {
+.cardd {
   position: relative;
   text-align: center;
   color: white;
 }
-.title {
+.titlee {
   position: absolute;
   top: 40px;
   left: 45px;
@@ -654,6 +654,8 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  margin-right: 78px;
+  margin-top: 6px;
 }
 
 .forgot-decoration {

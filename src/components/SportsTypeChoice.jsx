@@ -23,14 +23,12 @@ function SportsTypeChoice() {
   };
   return (
     <div className="main">
-      <div>
-        <NavBarOneBtn btnTxt="BOOKINGS" clickMe={handleClick} />
-      </div>
+      <NavBarOneBtn btnTxt="BOOKINGS" clickMe={handleClick} />
       <h2 className="choose-title">Please choose a type</h2>
-      <div className="wrapper">
+      <div className="wrapperr">
         {myArray2.map((record) => {
           return (
-            <div className="flex-box">
+            <div className="flex-boxx">
               <Card record={record} />
             </div>
           );
@@ -85,9 +83,9 @@ function Card(props) {
   };
 
   return (
-    <div className="card" onClick={handleClick}>
+    <div className="cardd" onClick={handleClick}>
       <img className="imgg" src={img} alt="Sports-img" />
-      <div className="title">
+      <div className="titlee">
         <h2 className="card__title">{title}</h2>
       </div>
       <div className="courts">
