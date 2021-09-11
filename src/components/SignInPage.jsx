@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom";
 function SignInPage() {
   let history = useHistory();
   const handleClick = () => {
-    history.push("/sports-choice");
+    history.push("/signin");
   };
   return (
     <div className="main-body bg-home">
