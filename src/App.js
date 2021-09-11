@@ -9,42 +9,50 @@ import About from "./components/About";
 import SignUpPage from "./components/SignUpPage";
 import ForgotPass from "./components/ForgotPass";
 
-import {BrowserRouter as Router,Route,Switch} from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import PrivateRoute from "./components/PrivateRoute";
+import { AuthProvider } from "./Auth";
 
 function App() {
   return (
-    <Router>
-    <div>
-      <Switch>
-        <Route exact path="/"> 
-          <Homepage />
-        </Route>
-        <Route exact path="/signin"> 
-          <SignInPage />
-        </Route>
-        <Route exact path="/about"> 
-          <About />
-        </Route>
-        <Route exact path="/current-bookings"> 
-          <CurrBookingsPage/>
-        </Route>
-        <Route exact path="/sports-choice"> 
-          <SportsTypeChoice />
-        </Route>
-        <Route exact path="/courts-locations"> 
-          <CourtsLocations />
-        </Route>
-        <Route exact path="/signup"> 
-          <SignUpPage />
-        </Route>
-        <Route exact path="/forgot-password"> 
-          <ForgotPass />
-        </Route>
-        
-      </Switch>
-      
-    </div>
-    </Router>
+    <AuthProvider>
+      <Router>
+        <div>
+          <Switch>
+            <Route exact path="/">
+              <Homepage />
+            </Route>
+            <Route exact path="/signin">
+              <SignInPage />
+            </Route>
+            <Route exact path="/about">
+              <About />
+            </Route>
+            <PrivateRoute
+              exact
+              path="/current-bookings"
+              component={CurrBookingsPage}
+            />
+            <PrivateRoute
+              exact
+              path="/sports-choice"
+              component={SportsTypeChoice}
+            />
+            <PrivateRoute
+              exact
+              path="/courts-locations"
+              component={CourtsLocations}
+            />
+            <Route exact path="/signup">
+              <SignUpPage />
+            </Route>
+            <Route exact path="/forgot-password">
+              <ForgotPass />
+            </Route>
+          </Switch>
+        </div>
+      </Router>
+    </AuthProvider>
   );
 }
 export default App;

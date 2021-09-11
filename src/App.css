@@ -61,11 +61,11 @@
   left: 0; */
 }
 
-@media screen and (max-width: 1024px) {
+/* @media screen and (max-width: 1024px) {
   .bg-home {
     max-width: 1024;
   }
-}
+} */
 
 .screen-margin-all {
   margin-left: 3vw;
@@ -106,7 +106,7 @@
 
 .logo-text {
   font-weight: 300;
-  font-size: 2vw;
+  font-size: 1.6vw;
 }
 
 .court-owner-txt {
@@ -708,6 +708,14 @@
   margin-left: 17vh;
 }
 
+.fields-sized-box {
+  height: 3vh;
+}
+
+.field-width {
+  width: 28vw;
+}
+
 .phone-text-fields {
   border-radius: 20px;
   width: 350px;
@@ -745,4 +753,8 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.fields-color {
+  background-color: rgba(205, 205, 205, 0.3);
 }

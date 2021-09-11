@@ -1,5 +1,6 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
+import userWhite from "../assets/images/userWhite.png";
 
 function ForgotPass() {
   let history = useHistory();
@@ -16,13 +17,19 @@ function ForgotPass() {
         <div className="body1">No Worries, just enter your phone number</div>
 
         <form className="phonenumber-field">
-          <input
-            className="phone-text-fields"
-            type="text"
-            placeholder="Phone Number"
-            name="uname"
-            required
-          />
+          <label class="relative focus-within:text-white block">
+            <img
+              src={userWhite}
+              className="pointer-events-none w-5 h-5 absolute top-1/2 transform -translate-y-1/2 left-4"
+            />
+            <input
+              type="mobile"
+              name="mobile"
+              id="mobile"
+              placeholder="Mobile Number"
+              class="form-input text-white fields-color py-3 px-4 placeholder-white appearance-none w-full block pl-14 focus:outline-none rounded-full field-width"
+            />
+          </label>
         </form>
       </div>
 
