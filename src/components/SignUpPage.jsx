@@ -30,7 +30,9 @@ function SignUp() {
 
   return (
     <div class="main-body bg-home">
-      <div class="signup-title">SPORTSBUD</div>
+      <a href="/" className="signup-title">
+        SPORTSBUD
+      </a>
 
       <div class="sub-title">
         <div class="bodies">Sign Up</div>

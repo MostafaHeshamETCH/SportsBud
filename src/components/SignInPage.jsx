@@ -24,15 +24,17 @@ function SignInPage() {
     [history]
   );
 
-  // const { currentUser } = useContext(AuthContext);
+  const { currentUser } = useContext(AuthContext);
 
-  // if (currentUser) {
-  //   return <Redirect to="/sports-choice" />;
-  // }
+  if (currentUser) {
+    return <Redirect to="/sports-choice" />;
+  }
 
   return (
     <div className="main-body bg-home">
-      <div class="signup-title">SPORTSBUD</div>
+      <a href="/" class="signin-title">
+        SPORTSBUD
+      </a>
       <div className="sub-title">
         <div className="bodies">Sign in</div>
         <div className="body1">Please enter your login information</div>

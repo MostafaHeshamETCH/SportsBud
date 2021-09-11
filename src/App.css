@@ -678,12 +678,27 @@
   margin-top: none;
 }
 
+.signin-title {
+  text-align: center;
+  width: 100%;
+  font-size: 1.4em;
+  cursor: pointer;
+  color: white;
+  margin-bottom: 10vh;
+  margin-top: 2vh;
+  display: block;
+}
+
 /*SignUp Page*/
 .signup-title {
   text-align: center;
   width: 100%;
-  color: lightgray;
-  margin-bottom: 40px;
+  font-size: 1.4em;
+  cursor: pointer;
+  color: white;
+  margin-bottom: 5vh;
+  display: block;
+  margin-top: 2vh;
 }
 #divForm {
   gap: 15px;
