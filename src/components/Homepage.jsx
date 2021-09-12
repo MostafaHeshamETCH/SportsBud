@@ -9,13 +9,14 @@ function Homepage() {
   const { height } = useWindowDimensions();
 
   const bgFullHeightStyle = {
-    height: height,
+    height: height
   };
 
   let history = useHistory();
   const handleClick = () => {
     history.push("/signup");
   };
+
   return (
     <div className="bg-home font-all" style={bgFullHeightStyle}>
       <NavBarTwoBtns btnTxt="SIGN UP" clickMe={handleClick} />
@@ -32,7 +33,10 @@ function Homepage() {
         </button>
         <div className="flex flex-row margin-top-big flex-grow">
           <div className="court-owner-txt">A Court-Owner?</div>
-          <button className="focus:outline-none hover:underline pl-1 mr-3 text-white homepage-admin-create-btn">
+          <button
+            // onClick={readData}
+            className="focus:outline-none hover:underline pl-1 mr-3 text-white homepage-admin-create-btn"
+          >
             Press here
           </button>
         </div>
