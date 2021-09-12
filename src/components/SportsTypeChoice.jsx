@@ -50,7 +50,7 @@ function SportsTypeChoice() {
   };
 
   return (
-    <div className="main">
+    <div className="main font-all max-width-auto">
       <NavBarOneBtn btnTxt="BOOKINGS" clickMe={bookingBtnClick} />
       <h2 className="choose-title">Please choose a type</h2>
       <div className="wrapperr">

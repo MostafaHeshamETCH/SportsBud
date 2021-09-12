@@ -14,7 +14,7 @@ function CourtsLocations() {
     history.push("/current-bookings");
   };
   return (
-    <div className="main">
+    <div className="main font-all max-width-auto">
       <div>
         <NavBarOneBtn btnTxt="BOOKINGS" clickMe={handleClick} />
       </div>
