@@ -42,6 +42,11 @@
   font-family: "Montserrat", sans-serif;
 }
 
+.max-width-auto {
+  max-width: 1260px;
+  margin: 0 auto;
+}
+
 .bg-home {
   background: url(./assets/images/bg-home.png) no-repeat center center fixed;
   background-size: cover;
@@ -50,7 +55,7 @@
   padding-top: 1vh;
   width: 100%;
   position: fixed;
-  white-space: nowrap;
+  /* white-space: nowrap;
   /* min-height: 100%;
   min-width: 1024px;
   background: url(./assets/images/bg-home.png);
