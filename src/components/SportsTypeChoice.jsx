@@ -41,7 +41,7 @@ function SportsTypeChoice() {
     { id: 3, title: "PADDLE", nocourts: "5 COURTS", img: paddle },
     { id: 4, title: "SQUASH", nocourts: "12 COURTS", img: squash },
     { id: 5, title: "VOLLEY", nocourts: "7 COURTS", img: volley },
-    { id: 6, title: "HANDBALL", nocourts: "9 COURTS", img: handball }
+    { id: 6, title: "HANDBALL", nocourts: "9 COURTS", img: handball },
   ]);
   let history = useHistory();
 
@@ -54,7 +54,7 @@ function SportsTypeChoice() {
       <NavBarOneBtn btnTxt="BOOKINGS" clickMe={bookingBtnClick} />
       <h2 className="choose-title">Please choose a type</h2>
       <div className="wrapperr">
-        {myArray2.map(record => {
+        {myArray2.map((record) => {
           return (
             <div className="flex-boxx">
               <Card record={record} />
@@ -83,54 +83,54 @@ function Card(props) {
             available_hours: [
               {
                 slot_time: "8:00 AM to 9:00 AM",
-                is_available: true
+                is_available: true,
               },
               {
                 slot_time: "10:00 AM to 11:00 AM",
-                is_available: false
+                is_available: false,
               },
               {
                 slot_time: "6:00 PM to 7:00 PM",
-                is_available: true
-              }
-            ]
+                is_available: true,
+              },
+            ],
           },
           {
             id: 1,
             available_hours: [
               {
                 slot_time: "8:00 AM to 9:00 AM",
-                is_available: true
+                is_available: true,
               },
               {
                 slot_time: "10:00 AM to 11:00 AM",
-                is_available: false
+                is_available: false,
               },
               {
                 slot_time: "6:00 PM to 7:00 PM",
-                is_available: true
-              }
-            ]
+                is_available: true,
+              },
+            ],
           },
           {
             id: 1,
             available_hours: [
               {
                 slot_time: "8:00 AM to 9:00 AM",
-                is_available: true
+                is_available: true,
               },
               {
                 slot_time: "10:00 AM to 11:00 AM",
-                is_available: false
+                is_available: false,
               },
               {
                 slot_time: "6:00 PM to 7:00 PM",
-                is_available: true
-              }
-            ]
-          }
+                is_available: true,
+              },
+            ],
+          },
         ],
-        courts_num: 3
+        courts_num: 3,
       });
       console.log("Document written with ID: ", docRef.id);
     } catch (e) {
@@ -144,12 +144,12 @@ function Card(props) {
     const placesArray = [];
     const db = getFirestore();
     const placesIns = await getDocs(collection(db, "Places"));
-    placesIns.forEach(doc => {
+    placesIns.forEach((doc) => {
       const data = doc.data();
       const courts = [];
-      data.courts.forEach(court => {
+      data.courts.forEach((court) => {
         const slots = [];
-        court.available_hours.forEach(ah => {
+        court.available_hours.forEach((ah) => {
           slots.push(new Slot(ah.slot_time, ah.isAvailable));
         });
         courts.push(new Court(court.id, slots));
@@ -171,7 +171,7 @@ function Card(props) {
   const { img, title, nocourts } = props.record;
 
   //Rendering Courts locations page and pass the title
-  const handleClick = async e => {
+  const handleClick = async (e) => {
     const placesArray = await readData();
 
     if (title === "PADDLE") {
@@ -179,8 +179,8 @@ function Card(props) {
         pathname: "/courts-locations",
         state: {
           title: "Paddle Courts",
-          places: placesArray
-        }
+          places: placesArray,
+        },
       });
     }
     if (title === "FOOTBALL") {
@@ -188,8 +188,8 @@ function Card(props) {
         pathname: "/courts-locations",
         state: {
           title: "Paddle Courts",
-          places: placesArray
-        }
+          places: placesArray,
+        },
       });
     }
     if (title === "VOLLEYBALL") {
@@ -197,8 +197,8 @@ function Card(props) {
         pathname: "/courts-locations",
         state: {
           title: "Paddle Courts",
-          places: placesArray
-        }
+          places: placesArray,
+        },
       });
     }
     if (title === "TENNIS") {
@@ -206,8 +206,8 @@ function Card(props) {
         pathname: "/courts-locations",
         state: {
           title: "Paddle Courts",
-          places: placesArray
-        }
+          places: placesArray,
+        },
       });
     }
     if (title === "SQUASH") {
@@ -215,8 +215,8 @@ function Card(props) {
         pathname: "/courts-locations",
         state: {
           title: "Paddle Courts",
-          places: placesArray
-        }
+          places: placesArray,
+        },
       });
     }
     if (title === "HANDBALL") {
@@ -224,8 +224,8 @@ function Card(props) {
         pathname: "/courts-locations",
         state: {
           title: "Paddle Courts",
-          places: placesArray
-        }
+          places: placesArray,
+        },
       });
     }
   };
