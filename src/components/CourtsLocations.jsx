@@ -43,17 +43,26 @@ function CourtsLocations() {
 
 function Card2(props) {
   const place = props.place;
-  const handleClick = e => {
-    // console.log("hi");
-    e.preventDefault();
+  let history = useHistory();
+  const handleClick2 = () => {
+    history.push({
+      pathname: "/about",
+      state: {
+        title: place.name,
+        prices: place.pricePerHour,
+        DayAndTime: place.courts,
+      },
+    });
   };
   return (
-    <div className="cardd" onClick={handleClick}>
-      <h2 className="place_courts">{place.name}</h2>
-      <h2 className="price_courts">
-        {place.pricePerHour.toString() + " EGP/Hour"}
-      </h2>
-      <img className="coin-img" src={coinWhite} alt="coin icon" />
+    <div onClick={handleClick2}>
+      <div className="cardd">
+        <h2 className="place_courts">{place.name}</h2>
+        <h2 className="price_courts">
+          {place.pricePerHour.toString() + " EGP/Hour"}
+        </h2>
+        <img className="coin-img" src={coinWhite} alt="coin icon" />
+      </div>
     </div>
   );
 }

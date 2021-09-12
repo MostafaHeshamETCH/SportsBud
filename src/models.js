@@ -48,8 +48,15 @@ class Place {
 }
 
 class Court {
-  constructor(ID, availableHours) {
+  constructor(ID, daysAndAvailableHours) {
     this.ID = ID;
+    this.daysAndAvailableHours = daysAndAvailableHours;
+  }
+}
+
+class DaysAndAvailableHours {
+  constructor(date, availableHours) {
+    this.date = date;
     this.availableHours = availableHours;
   }
 }

@@ -1,17 +1,22 @@
-import React, { PureComponent } from "react";
+import React from "react";
+import NavBarOneBtn from "./NavBarOneBtn";
+import { useLocation } from "react-router-dom";
+function About() {
+  const location = useLocation();
 
-export class About extends PureComponent {
-  render() {
-    return (
-      <div className="screen-margin-all">
-        <div className="flex items-center justify-center">
-          <a href="/" className="text-white cursor-pointer logo-text">
-            <span>SPORTSBUD</span>
-          </a>
-        </div>
+  return (
+    <div className="main font-all max-width-auto">
+      <div>
+        <NavBarOneBtn btnTxt="BOOKINGS" />
       </div>
-    );
-  }
+      <h2>{location.state.title}</h2>
+      <h3>{location.state.prices} EGP</h3>
+
+      {location.state.DayAndTime.map((times) => {
+        console.log(times.id);
+      })}
+    </div>
+  );
 }
 
 export default About;
