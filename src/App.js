@@ -8,6 +8,7 @@ import SignInPage from "./components/SignInPage";
 import About from "./components/About";
 import SignUpPage from "./components/SignUpPage";
 import ForgotPass from "./components/ForgotPass";
+import BookingCourt from "./components/BookingCourt";
 
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import PrivateRoute from "./components/PrivateRoute";
@@ -32,6 +33,11 @@ function App() {
               exact
               path="/current-bookings"
               component={CurrBookingsPage}
+            />
+            <PrivateRoute
+              exact
+              path="/booking-court"
+              component={BookingCourt}
             />
             <PrivateRoute
               exact

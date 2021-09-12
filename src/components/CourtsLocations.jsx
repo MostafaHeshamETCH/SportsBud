@@ -46,11 +46,13 @@ function Card2(props) {
   let history = useHistory();
   const handleClick2 = () => {
     history.push({
-      pathname: "/about",
+      pathname: "/booking-court",
       state: {
         title: place.name,
         prices: place.pricePerHour,
-        DayAndTime: place.courts,
+        place: place.location,
+        courts_num: place.courts_num,
+        courtsArray: place.courts,
       },
     });
   };

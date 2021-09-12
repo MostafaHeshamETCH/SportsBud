@@ -18,7 +18,7 @@ function CourtsBar() {
 
   //close when user clicks outside the drop-down item
   useEffect(() => {
-    const pageClickEvent = e => {
+    const pageClickEvent = (e) => {
       if (
         dropdownRefCalender.current !== null &&
         !dropdownRefCalender.current.contains(e.target)

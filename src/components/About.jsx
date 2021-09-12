@@ -9,9 +9,6 @@ function About() {
       <div>
         <NavBarOneBtn btnTxt="BOOKINGS" />
       </div>
-      <h2>{location.state.title}</h2>
-      <h3>{location.state.prices} EGP</h3>
-
       {location.state.DayAndTime.map((times) => {
         console.log(times.id);
       })}

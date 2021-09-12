@@ -10,13 +10,13 @@ import { useHistory } from "react-router-dom";
 import { getFirestore, collection, addDoc, getDocs } from "firebase/firestore";
 
 class Place {
-  constructor(name, type, pricePerHour, location, courts, courtsNo) {
+  constructor(name, type, pricePerHour, location, courts, courts_num) {
     this.name = name;
     this.type = type;
     this.pricePerHour = pricePerHour;
     this.location = location;
     this.courts = courts;
-    this.courtsNo = courtsNo;
+    this.courts_num = courts_num;
   }
 }
 
