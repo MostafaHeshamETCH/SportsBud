@@ -43,6 +43,7 @@ function SignInPage() {
         <form className="phonenumber-field" onSubmit={handleLogin}>
           <label class="relative focus-within:text-white block">
             <img
+              alt="user icon"
               src={userWhite}
               className="pointer-events-none w-5 h-5 absolute top-1/2 transform -translate-y-1/2 left-4"
             />
@@ -57,6 +58,7 @@ function SignInPage() {
           <div className="fields-sized-box"></div>
           <label class="relative focus-within:text-white block ">
             <img
+              alt="user icon"
               src={lockWhite}
               className="pointer-events-none w-5 h-5 absolute top-1/2 transform -translate-y-1/2 left-4"
             />

@@ -11,11 +11,11 @@ function SignUp() {
     async event => {
       event.preventDefault();
       const {
-        fullname,
-        mobile,
+        // fullname,
+        // mobile,
         email,
-        password,
-        confirmpassword
+        password
+        // confirmpassword
       } = event.target.elements;
       try {
         const auth = getAuth();
@@ -43,6 +43,7 @@ function SignUp() {
         <form class="phonenumber-field" id="divForm" onSubmit={handleSignUp}>
           <label class="relative focus-within:text-white block">
             <img
+              alt="user icon"
               src={userWhite}
               className="pointer-events-none w-5 h-5 absolute top-1/2 transform -translate-y-1/2 left-4"
             />
@@ -56,6 +57,7 @@ function SignUp() {
           </label>
           <label class="relative focus-within:text-white block">
             <img
+              alt="user icon"
               src={userWhite}
               className="pointer-events-none w-5 h-5 absolute top-1/2 transform -translate-y-1/2 left-4"
             />
@@ -69,6 +71,7 @@ function SignUp() {
           </label>
           <label class="relative focus-within:text-white block">
             <img
+              alt="user icon"
               src={userWhite}
               className="pointer-events-none w-5 h-5 absolute top-1/2 transform -translate-y-1/2 left-4"
             />
@@ -82,6 +85,7 @@ function SignUp() {
           </label>
           <label class="relative focus-within:text-white block">
             <img
+              alt="user icon"
               src={userWhite}
               className="pointer-events-none w-5 h-5 absolute top-1/2 transform -translate-y-1/2 left-4"
             />
@@ -95,6 +99,7 @@ function SignUp() {
           </label>
           <label class="relative focus-within:text-white block">
             <img
+              alt="user icon"
               src={userWhite}
               className="pointer-events-none w-5 h-5 absolute top-1/2 transform -translate-y-1/2 left-4"
             />
