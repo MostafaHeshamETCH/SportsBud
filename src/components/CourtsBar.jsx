@@ -5,11 +5,11 @@ import calendarBlack from "../assets/images/calenderBlack.png";
 import dividerBlack from "../assets/images/dividerBlack.png";
 import Calendar from "react-calendar";
 
-function CourtsBar() {
+function CourtsBar({ date, setDate }) {
   const [openCalender, setOpenCalender] = useState(false);
   const [openSlots, setOpenSlots] = useState(false);
   const [openPlayers, setOpenPlayers] = useState(false);
-  const [date, setDate] = useState(new Date());
+  // const [date, setDate] = useState(new Date());
   const [slots, setSlots] = useState(1);
   const [players, setPlayers] = useState(1);
   const dropdownRefCalender = useRef(null);
@@ -18,7 +18,7 @@ function CourtsBar() {
 
   //close when user clicks outside the drop-down item
   useEffect(() => {
-    const pageClickEvent = (e) => {
+    const pageClickEvent = e => {
       if (
         dropdownRefCalender.current !== null &&
         !dropdownRefCalender.current.contains(e.target)

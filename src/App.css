@@ -779,15 +779,26 @@
   background-color: rgba(205, 205, 205, 0.3);
 }
 
+.bookingContainer2 {
+  padding: 20px;
+  border-radius: 60px;
+  background-color: #212121;
+  height: 250px;
+  margin: 40px;
+  color: white;
+  position: relative;
+}
+
 /*Booking Court PEPS*/
-#bookingCourtCard {
+#bookingCourtCard2 {
   padding: 20px;
   border-radius: 90px;
   background-color: #212121;
   color: white;
   position: relative;
-  cursor: pointer;
-  height: 70vh;
+  /* cursor: pointer; */
+  /* height: 43vh; */
+  height: auto;
   /*width: 100%;*/
 }
 
@@ -799,9 +810,9 @@
 .coinImg {
   margin-right: 2vh;
   width: auto;
-  height: 5vh;
+  height: 3vh;
   padding: 0;
-  margin-top: 2vh;
+  margin-top: 1vh;
 }
 
 .confirm-button {
@@ -834,8 +845,8 @@
 .Timings {
   display: flex;
   flex-direction: row;
-  gap: 40px;
-  margin-left: 2vw;
+  /* gap: 2em; */
+  /* margin-left: 2vw; */
 }
 
 .timings-table {
@@ -844,7 +855,7 @@
 
 .timings-table2 {
   margin-top: 1vw;
-  margin-left: 25vw;
+  margin-left: 14vw;
 }
 
 .aligning-fonts {
@@ -853,7 +864,7 @@
 }
 
 .ClockImgSmall {
-  width: 3vw;
+  width: 2vw;
   height: auto;
   padding: 0;
   margin-left: 2vw;
@@ -867,13 +878,13 @@
 
 .CourtName {
   font-weight: 400;
-  font-size: 57px;
+  font-size: 3em;
   font-family: Montserrat, ital;
   display: flex;
 }
 
 .LocationImgSmall {
-  width: 3vw;
+  width: 2vw;
   height: auto;
   margin-bottom: 5px;
 }
@@ -885,8 +896,23 @@
   margin-top: -50px;
 }
 
+/* input[type="checkbox"] {
+  appearance: none;
+  cursor: pointer;
+  width: 0;
+  height: 0;
+}
+
+input[type="checkbox"]::before {
+  content: url("assets/images/checkmarkWhiteFilled.png");
+}
+
+input[type="checkbox"]:checked::before {
+  content: url("assets/images/checkmarkWhiteFilled.png");
+} */
+
 .CalendarImgSmall {
-  width: 3vw;
+  width: 2vw;
   height: auto;
   margin-left: 290px;
   margin-top: -45px;
