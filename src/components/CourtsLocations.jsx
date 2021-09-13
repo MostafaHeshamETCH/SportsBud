@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import NavBarOneBtn from "./NavBarOneBtn";
 import locationBlack from "../assets/images/locationBlack.png";
 import CourtsBar from "./CourtsBar";
@@ -9,6 +9,7 @@ import { useHistory } from "react-router-dom";
 function CourtsLocations() {
   //For Recieving title sent from the previous page
   const location = useLocation();
+  const [date, setDate] = useState(new Date());
   let history = useHistory();
   const handleClick = () => {
     history.push("/current-bookings");
@@ -19,13 +20,13 @@ function CourtsLocations() {
         <NavBarOneBtn btnTxt="BOOKINGS" clickMe={handleClick} />
       </div>
       <h2 className="courts-title">{location.state.title}</h2>
-      <CourtsBar />
+      <CourtsBar date={date} setDate={setDate} />
       <div className="wrapperr">
         {location.state.places.map((place, index) => {
           return (
             <div className="container2">
               <div className="flex-box2">
-                <Card2 key={index} place={place} />
+                <Card2 key={index} place={place} date={date} />
               </div>
               <img
                 className="locationImgBlack"
@@ -53,7 +54,8 @@ function Card2(props) {
         place: place.location,
         courts_num: place.courts_num,
         courtsArray: place.courts,
-      },
+        date: props.date
+      }
     });
   };
   return (

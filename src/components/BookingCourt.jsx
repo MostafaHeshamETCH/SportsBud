@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import ClockImg from "../assets/images/clock.png";
 import LocationImgBlack from "../assets/images/locationBlack.png";
 import CalendarImgBlack from "../assets/images/calenderBlack.png";
@@ -14,7 +14,7 @@ function BookingCourt() {
   const data = location.state.courtsArray;
   const date = location.state.date;
   return (
-    <div>
+    <div className=" max-width-auto">
       <NavBarOneBtn btnTxt="Bookings" />
       <div className="BookingCourtTitle">
         <div className="CourtName">
@@ -29,20 +29,31 @@ function BookingCourt() {
             src={LocationImgBlack}
             alt="location"
           />
-          <p className="locationN"> {location.state.place}</p>
+          <p className="locationN"> {location.state.place} </p>
           <img
             className="CalendarImgSmall"
             src={CalendarImgBlack}
             alt="calendar"
           />
-          <p className="dateplacement"> 3/9/2021</p>
+          <p className="dateplacement">
+            {" "}
+            {location.state.date.getDate()} /{" "}
+            {location.state.date.getMonth() + 1} /{" "}
+            {location.state.date.getFullYear()}{" "}
+          </p>
           <p className="numberOfCourts"> {location.state.courts_num}</p>
           <p className="newPara">Court/s</p>
         </div>
         <div>
-          {data.map((court) => {
-            console.log(court);
-            return <Card3 tg={court.ID} arr1={court} />;
+          {data.map(court => {
+            return (
+              <Card3
+                tg={court.ID}
+                court={court}
+                date={location.state.date}
+                key={court.ID}
+              />
+            );
           })}
         </div>
       </div>
@@ -52,11 +63,29 @@ function BookingCourt() {
 
 function Card3(props) {
   var ss = props.tg;
-  var arr = props.arr1.daysAndAvailableHours;
-  console.log(arr);
+  const filteredDay = props.court.daysAndAvailableHours
+    .filter(
+      da =>
+        da.date ===
+        props.date.getDate() +
+          " / " +
+          (props.date.getMonth() + 1) +
+          " / " +
+          props.date.getFullYear()
+    )[0]
+    .availableHours.filter(ah => ah.isAvailable);
+
+  const half = Math.ceil(filteredDay.length / 2);
+  const currTimes1 = filteredDay.slice(0, half);
+  const currTimes2 = filteredDay.slice(half, filteredDay.length);
+
+  const isCheckedArraytemp = new Array(half).fill(true);
+  var [checked1, setChecked1] = useState(isCheckedArraytemp);
+  var [checked2, setChecked2] = useState(isCheckedArraytemp);
+
   return (
-    <div className="WideCard">
-      <div className="bookingContainer font-all" id="bookingCourtCard">
+    <div>
+      <div className="bookingContainer2 font-all" id="bookingCourtCard2">
         <div className="bookingName">
           <p>COURT {ss}</p>
         </div>
@@ -65,79 +94,72 @@ function Card3(props) {
         </div>
         <div className="Timings">
           <table className="timings-table">
-            <tr className="table-row">
-              <img className="ClockImgSmall" src={ClockImg} alt="clock" />
-              <td className="aligning-fonts">11:00 AM - 12:00 PM</td>
-              <button>
-                <img
-                  className="ClockImgSmall"
-                  src={UnFilledMark}
-                  alt="checkmark"
-                />
-              </button>
-            </tr>
-
-            <tr>
-              <img className="ClockImgSmall" src={ClockImg} alt="clock" />
-              <td className="aligning-fonts">12:00 PM - 1:00 PM</td>
-              <button>
-                <img
-                  className="ClockImgSmall"
-                  src={UnFilledMark}
-                  alt="checkmark"
-                />
-              </button>
-            </tr>
-
-            <tr>
-              <img className="ClockImgSmall" src={ClockImg} alt="clock" />
-              <td className="aligning-fonts">1:00 PM - 2:00 PM</td>
-              <button>
-                <img
-                  className="ClockImgSmall"
-                  src={UnFilledMark}
-                  alt="checkmark"
-                />
-              </button>
-            </tr>
+            {currTimes1.map((currTime, index) => (
+              <tr className="table-row">
+                <img className="ClockImgSmall" src={ClockImg} alt="clock" />
+                <td className="aligning-fonts">{currTime.slotTime} </td>
+                <button>
+                  {checked1[index] && (
+                    <img
+                      className="ClockImgSmall"
+                      src={UnFilledMark}
+                      alt="checkmark"
+                      onClick={() => {
+                        let newArr = [...checked1];
+                        newArr[index] = false;
+                        setChecked1(newArr);
+                      }}
+                    />
+                  )}
+                  {!checked1[index] && (
+                    <img
+                      className="ClockImgSmall"
+                      src={FilledMark}
+                      alt="checkmark"
+                      onClick={() => {
+                        let newArr = [...checked1];
+                        newArr[index] = true;
+                        setChecked1(newArr);
+                      }}
+                    />
+                  )}
+                </button>
+              </tr>
+            ))}
           </table>
-
           <table className="timings-table2">
-            <tr className="table-row">
-              <img className="ClockImgSmall" src={ClockImg} alt="clock" />
-              <td className="aligning-fonts">3:00 PM - 5:00 PM</td>
-              <button>
-                <img
-                  className="ClockImgSmall"
-                  src={UnFilledMark}
-                  alt="checkmark"
-                />
-              </button>
-            </tr>
-
-            <tr>
-              <img className="ClockImgSmall" src={ClockImg} alt="clock" />
-              <td className="aligning-fonts">6:00 PM - 7:00 PM</td>
-              <button>
-                <img
-                  className="ClockImgSmall"
-                  src={UnFilledMark}
-                  alt="checkmark"
-                />
-              </button>
-            </tr>
-
-            <tr>
-              <img className="ClockImgSmall" src={ClockImg} alt="clock" />
-              <td className="aligning-fonts">9:00 PM - 10:00 PM</td>
-              <button>
-                <img
-                  className="ClockImgSmall"
-                  src={UnFilledMark}
-                  alt="checkmark"
-                />
-              </button>
-            </tr>
+            {currTimes2.map((currTime, index) => (
+              <tr className="table-row">
+                <img className="ClockImgSmall" src={ClockImg} alt="clock" />
+                <td className="aligning-fonts">{currTime.slotTime} </td>
+                <button>
+                  {checked2[index] && (
+                    <img
+                      className="ClockImgSmall"
+                      src={UnFilledMark}
+                      alt="checkmark"
+                      onClick={() => {
+                        let newArr = [...checked2];
+                        newArr[index] = false;
+                        setChecked2(newArr);
+                      }}
+                    />
+                  )}
+                  {!checked2[index] && (
+                    <img
+                      className="ClockImgSmall"
+                      src={FilledMark}
+                      alt="checkmark"
+                      onClick={() => {
+                        let newArr = [...checked2];
+                        newArr[index] = true;
+                        setChecked2(newArr);
+                      }}
+                    />
+                  )}
+                </button>
+              </tr>
+            ))}
           </table>
         </div>
         <div className="confirm-button">
