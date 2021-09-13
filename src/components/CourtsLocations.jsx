@@ -54,8 +54,8 @@ function Card2(props) {
         place: place.location,
         courts_num: place.courts_num,
         courtsArray: place.courts,
-        date: props.date
-      }
+        date: props.date,
+      },
     });
   };
   return (

@@ -10,7 +10,6 @@ import { useLocation } from "react-router-dom";
 
 function BookingCourt() {
   const location = useLocation();
-  var count = 0;
   const data = location.state.courtsArray;
   const date = location.state.date;
   return (
@@ -45,7 +44,7 @@ function BookingCourt() {
           <p className="newPara">Court/s</p>
         </div>
         <div>
-          {data.map(court => {
+          {data.map((court) => {
             return (
               <Card3
                 tg={court.ID}
@@ -65,7 +64,7 @@ function Card3(props) {
   var ss = props.tg;
   const filteredDay = props.court.daysAndAvailableHours
     .filter(
-      da =>
+      (da) =>
         da.date ===
         props.date.getDate() +
           " / " +
@@ -73,7 +72,7 @@ function Card3(props) {
           " / " +
           props.date.getFullYear()
     )[0]
-    .availableHours.filter(ah => ah.isAvailable);
+    .availableHours.filter((ah) => ah.isAvailable);
 
   const half = Math.ceil(filteredDay.length / 2);
   const currTimes1 = filteredDay.slice(0, half);
