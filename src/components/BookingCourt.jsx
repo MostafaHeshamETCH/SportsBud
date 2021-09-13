@@ -12,6 +12,7 @@ function BookingCourt() {
   const location = useLocation();
   var count = 0;
   const data = location.state.courtsArray;
+  const date = location.state.date;
   return (
     <div>
       <NavBarOneBtn btnTxt="Bookings" />
@@ -19,6 +20,7 @@ function BookingCourt() {
         <div className="CourtName">
           {location.state.title}
           <p className="no9"> 9 </p>
+          <h2>{date}</h2>
           <div className="availableSlots">Available Slots</div>
         </div>
         <div>
