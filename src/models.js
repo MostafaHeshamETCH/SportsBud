@@ -26,13 +26,13 @@ class CourtOwner {
 }
 
 class Booking {
-  constructor(placeName, courtName, location, slots, totalAmount, clientID) {
+  constructor(placeName, courtName, location, slots, totalAmount, email) {
     this.placeName = placeName;
     this.courtName = courtName;
     this.location = location;
     this.slots = slots;
     this.totalAmount = totalAmount;
-    this.clientID = clientID;
+    this.email = email;
   }
 }
 

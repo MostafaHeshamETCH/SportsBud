@@ -41,7 +41,7 @@ class Slot {
   }
 }
 
-function SportsTypeChoice() {
+function SportsTypeChoice(props) {
   const [myArray2] = useState([
     { id: 1, title: "TENNIS", nocourts: "10 COURTS", img: tennis },
     { id: 2, title: "FOOTBALL", nocourts: "24 COURTS", img: football },
@@ -53,7 +53,9 @@ function SportsTypeChoice() {
   let history = useHistory();
 
   const bookingBtnClick = () => {
-    history.push("/current-bookings");
+    history.push({
+      pathname: "/current-bookings",
+    });
   };
 
   return (
@@ -324,7 +326,6 @@ function Card(props) {
     });
     return placesArray;
   };
-
   let history = useHistory();
   const { img, title, nocourts } = props.record;
 
@@ -332,12 +333,12 @@ function Card(props) {
   const handleClick = async (e) => {
     const placesArray = await readData();
     // writeData();
-
     if (title === "PADDLE") {
       history.push({
         pathname: "/courts-locations",
         state: {
           title: "Paddle Courts",
+
           places: placesArray.filter((place) => place.type === "Paddle"),
         },
       });

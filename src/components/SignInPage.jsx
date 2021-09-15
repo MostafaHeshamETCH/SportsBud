@@ -8,7 +8,6 @@ import { AuthContext } from "../Auth";
 
 function SignInPage() {
   let history = useHistory();
-
   const handleLogin = useCallback(
     async (event) => {
       event.preventDefault();
@@ -27,7 +26,13 @@ function SignInPage() {
   const { currentUser } = useContext(AuthContext);
 
   if (currentUser) {
-    return <Redirect to="/sports-choice" />;
+    return (
+      <Redirect
+        to={{
+          pathname: "/sports-choice",
+        }}
+      />
+    );
   }
 
   return (

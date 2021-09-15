@@ -9,7 +9,7 @@ function Homepage() {
   const { height } = useWindowDimensions();
 
   const bgFullHeightStyle = {
-    height: height
+    height: height,
   };
 
   let history = useHistory();

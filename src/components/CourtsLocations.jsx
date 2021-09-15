@@ -9,10 +9,15 @@ import { useHistory } from "react-router-dom";
 function CourtsLocations() {
   //For Recieving title sent from the previous page
   const location = useLocation();
-  const [date, setDate] = useState(new Date());
+  const [date, setDate] = useState(new Date()); //sk
   let history = useHistory();
   const handleClick = () => {
-    history.push("/current-bookings");
+    history.push({
+      pathname: "/current-bookings",
+      state: {
+        mail: location.state.mail,
+      },
+    });
   };
   return (
     <div className="main font-all max-width-auto">
@@ -26,7 +31,12 @@ function CourtsLocations() {
           return (
             <div className="container2">
               <div className="flex-box2">
-                <Card2 key={index} place={place} date={date} />
+                <Card2
+                  key={index}
+                  place={place}
+                  date={date}
+                  mail={location.state.mail}
+                />
               </div>
               <img
                 className="locationImgBlack"
@@ -44,8 +54,10 @@ function CourtsLocations() {
 
 function Card2(props) {
   const place = props.place;
+  const mail = props.mail;
   let history = useHistory();
   const handleClick2 = () => {
+    console.log(mail);
     history.push({
       pathname: "/booking-court",
       state: {
