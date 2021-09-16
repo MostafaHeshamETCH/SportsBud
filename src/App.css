@@ -217,12 +217,12 @@
   cursor: pointer;
 }
 .bookingName {
-  font-size: 45px;
+  font-size: 40px;
   margin-left: 30px;
   font-weight: 400;
 }
 .courtNumber {
-  font-size: 35px;
+  font-size: 30px;
   margin-left: 30px;
   font-weight: 300;
 }
@@ -251,7 +251,7 @@
   position: absolute;
   bottom: 0;
   right: 0;
-  font-size: 6vh;
+  font-size: 38px;
   margin-right: 6vh;
   margin-bottom: 2vh;
 }
@@ -267,7 +267,7 @@
 .clockImg {
   margin-right: 2vh;
   width: 3vw;
-  height: 6vh;
+  height: auto;
   padding: 0;
   margin-top: 6px;
 }

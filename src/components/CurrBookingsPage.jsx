@@ -1,10 +1,8 @@
 import React from "react";
 import BookingCard from "./BookingCard";
+import { useLocation } from "react-router-dom";
 import NavBarOneBtn from "./NavBarOneBtn";
 import { getAuth, signOut } from "firebase/auth";
-import { useLocation } from "react-router";
-import { getFirestore, collection, addDoc, getDocs } from "firebase/firestore";
-import { useState, useEffect } from "react";
 
 class Booking {
   constructor(place_name, court_name, location, slots, total_amount, email) {
@@ -18,31 +16,7 @@ class Booking {
 }
 
 function CurrBookingsPage() {
-  const [bookings, setBookings] = useState([]);
-
-  useEffect(() => {
-    setBookings(readData());
-  }, []);
-
-  const readData = async () => {
-    const bookings = [];
-    const db = getFirestore();
-    const bookingsIns = await getDocs(collection(db, "Bookings"));
-
-    bookingsIns.forEach((doc) => {
-      const data = doc.data();
-      const booking = new Booking(
-        data.place_name,
-        data.court_name,
-        data.location,
-        data.slots,
-        data.total_amount,
-        data.email
-      );
-      bookings.push(booking);
-    });
-    return bookings;
-  };
+  const location = useLocation();
 
   return (
     <>
@@ -55,7 +29,7 @@ function CurrBookingsPage() {
               .then(() => {
                 // Sign-out successful.
               })
-              .catch((error) => {
+              .catch(error => {
                 alert(error);
               });
           }}
@@ -63,20 +37,19 @@ function CurrBookingsPage() {
         <div className="CurrentBookings font-all">
           <span className="currBookingsTitle">Current Bookings</span>
           <div className="wrapper2">
-            {bookings.map((record) => {
-              console.log(record);
-              //  if (record.email === mail) {
-              console.log(record.email);
-              return (
-                <div key={record.id} className="flex-box3">
+            <div className="flex-box3">
+              {location.state.bookings.map(booking => {
+                return (
                   <BookingCard
-                    mail={record.email}
-                    location={record.place_name}
+                    placeName={booking.place_name}
+                    location={booking.location}
+                    slot={booking.slots}
+                    courtName={booking.court_name}
+                    totalAmount={booking.total_amount}
                   />
-                </div>
-              );
-              //}
-            })}
+                );
+              })}
+            </div>
           </div>
         </div>
       </div>

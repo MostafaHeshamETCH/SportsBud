@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import ClockImg from "../assets/images/clock.png";
 import LocationImgBlack from "../assets/images/locationBlack.png";
 import CalendarImgBlack from "../assets/images/calenderBlack.png";
@@ -9,6 +9,8 @@ import NavBarOneBtn from "./NavBarOneBtn";
 import { useLocation } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 import { getFirestore, collection, addDoc, getDocs } from "firebase/firestore";
+import { AuthContext } from "../Auth";
+
 class Booking {
   constructor(place_name, court_name, location, slots, total_amount, email) {
     this.place_name = place_name;
@@ -41,7 +43,7 @@ function BookingCourt() {
             {data.map((court, index) => {
               //console.log(court);
               filteredDay = court.daysAndAvailableHours.filter(
-                (da) =>
+                da =>
                   da.date ===
                   location.state.date.getDate() +
                     " / " +
@@ -82,7 +84,7 @@ function BookingCourt() {
           <p className="newPara">Court/s</p>
         </div>
         <div>
-          {data.map((court) => {
+          {data.map(court => {
             //console.log(court);
             return (
               <Card3
@@ -104,8 +106,7 @@ function BookingCourt() {
 }
 
 function Card3(props) {
-  // console.log(props.court);
-  const mail = props.mail;
+  const { currentUser } = useContext(AuthContext);
   var title = props.title;
   var location = props.location;
   var id = props.tg;
@@ -113,7 +114,7 @@ function Card3(props) {
   var slot_array = [];
   const filteredDay = props.court.daysAndAvailableHours
     .filter(
-      (da) =>
+      da =>
         da.date ===
         props.date.getDate() +
           " / " +
@@ -121,7 +122,7 @@ function Card3(props) {
           " / " +
           props.date.getFullYear()
     )[0]
-    .availableHours.filter((ah) => ah.isAvailable);
+    .availableHours.filter(ah => ah.isAvailable);
 
   const half = Math.ceil(filteredDay.length / 2);
   const currTimes1 = filteredDay.slice(0, half);
@@ -129,83 +130,88 @@ function Card3(props) {
   const isCheckedArraytemp = new Array(half).fill(true);
   var [checked1, setChecked1] = useState(isCheckedArraytemp);
   var [checked2, setChecked2] = useState(isCheckedArraytemp);
-  var newArray = [];
+  // var newArray = [];
 
   let history = useHistory();
 
-  newArray.push(...checked1, ...checked2); //putting both of them in one array to be used down to get slot times
+  // newArray.push(...checked1, ...checked2); //putting both of them in one array to be used down to get slot times
   //console.log(newArray);
 
+  var [currentSelection1, setCurrentSelection1] = useState([]);
+  var [currentSelection2, setCurrentSelection2] = useState([]);
+  var [currentSelectionFinal, setCurrentSelectionFinal] = useState([]);
+  console.log(currentSelection1);
+  console.log(currentSelection2);
+
   //Assigning the changes in isAvailable to be sent and stored in DB
-  var x = props.court.daysAndAvailableHours.filter(
-    (da) =>
-      da.date ===
-      props.date.getDate() +
-        " / " +
-        (props.date.getMonth() + 1) +
-        " / " +
-        props.date.getFullYear()
-  );
-  x.forEach((item) => {
-    item.availableHours.forEach((time, index) => {
-      time.isAvailable = newArray[index];
-      //console.log(time.isAvailable);
-      if (time.isAvailable !== true) {
-        slot_array.push(time.slotTime);
-      }
-    });
-  });
+  // var x = props.court.daysAndAvailableHours.filter(
+  //   da =>
+  //     da.date ===
+  //     props.date.getDate() +
+  //       " / " +
+  //       (props.date.getMonth() + 1) +
+  //       " / " +
+  //       props.date.getFullYear()
+  // );
+  // x.forEach(item => {
+  //   item.availableHours.forEach((time, index) => {
+  //     time.isAvailable = newArray[index];
+  //     //console.log(time.isAvailable);
+  //     if (time.isAvailable !== true) {
+  //       slot_array.push(time.slotTime);
+  //     }
+  //   });
+  // });
   //console.log(slot_array);
 
-  /*const writeData = async () => {
+  const writeData = async () => {
     const db = getFirestore();
     try {
-      const docRef = await addDoc(collection(db, "Bookings"), {
+      await addDoc(collection(db, "Bookings"), {
         place_name: title,
         court_name: "Court " + id,
         location: location,
-        slots: slot_array,
+        slots: currentSelection1.concat(currentSelection2),
         total_amount: prices,
-        email: mail,
+        email: currentUser.email
       });
     } catch (e) {
       console.error("Error adding document: ", e);
     }
-  };*/
-  const readData = async () => {
-    console.log("ana");
-    const bookings = [];
-    const db = getFirestore();
-    const bookingsIns = await getDocs(collection(db, "Bookings"));
-    //console.log(bookingsIns);
-    /* const bookingsIns2 = bookingsIns.filter(
-      (da) => da.email === location.state.mail
-    );*/
-    bookingsIns.forEach((doc) => {
-      console.log(doc);
-
-      const data = doc.data();
-      const booking = new Booking(
-        data.place_name,
-        data.court_name,
-        data.location,
-        data.slots,
-        data.total_amount,
-        data.email
-      );
-
-      bookings.push(booking);
-    });
-    return bookings;
   };
+  // const readData = async () => {
+  //   console.log("ana");
+  //   const bookings = [];
+  //   const db = getFirestore();
+  //   const bookingsIns = await getDocs(collection(db, "Bookings"));
+  //   //console.log(bookingsIns);
+  //   /* const bookingsIns2 = bookingsIns.filter(
+  //     (da) => da.email === location.state.mail
+  //   );*/
+  //   bookingsIns.forEach(doc => {
+  //     console.log(doc);
 
-  const handleClick = async (e) => {
-    // writeData();
-    const bookingArray = await readData();
-    // console.log(bookingArray.filter((da) => da.email === mail));
+  //     const data = doc.data();
+  //     const booking = new Booking(
+  //       data.place_name,
+  //       data.court_name,
+  //       data.location,
+  //       data.slots,
+  //       data.total_amount,
+  //       data.email
+  //     );
 
+  //     bookings.push(booking);
+  //   });
+  //   return bookings;
+  // };
+
+  const handleClick = async e => {
+    console.log(currentUser.email);
+    writeData();
     history.push("/current-bookings");
   };
+
   return (
     <div>
       <div className="bookingContainer2 font-all" id="bookingCourtCard2">
@@ -231,6 +237,9 @@ function Card3(props) {
                         let newArr = [...checked1];
                         newArr[index] = false;
                         setChecked1(newArr);
+                        let tempCurrentSelection = [...currentSelection1];
+                        tempCurrentSelection.push(filteredDay[index]);
+                        setCurrentSelection1(tempCurrentSelection);
                       }}
                     />
                   )}
@@ -243,6 +252,12 @@ function Card3(props) {
                         let newArr = [...checked1];
                         newArr[index] = true;
                         setChecked1(newArr);
+                        let tempCurrentSelection = [...currentSelection1];
+                        tempCurrentSelection.splice(
+                          tempCurrentSelection.indexOf(filteredDay[index]),
+                          1
+                        );
+                        setCurrentSelection1(tempCurrentSelection);
                       }}
                     />
                   )}
@@ -265,6 +280,9 @@ function Card3(props) {
                         let newArr = [...checked2];
                         newArr[index] = false;
                         setChecked2(newArr);
+                        let tempCurrentSelection = [...currentSelection2];
+                        tempCurrentSelection.push(filteredDay[half + index]);
+                        setCurrentSelection2(tempCurrentSelection);
                       }}
                     />
                   )}
@@ -277,6 +295,14 @@ function Card3(props) {
                         let newArr = [...checked2];
                         newArr[index] = true;
                         setChecked2(newArr);
+                        let tempCurrentSelection = [...currentSelection2];
+                        tempCurrentSelection.splice(
+                          tempCurrentSelection.indexOf(
+                            filteredDay[half + index]
+                          ),
+                          1
+                        );
+                        setCurrentSelection2(tempCurrentSelection);
                       }}
                     />
                   )}

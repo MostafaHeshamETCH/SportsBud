@@ -1,22 +1,79 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import NavBarOneBtn from "./NavBarOneBtn";
 import locationBlack from "../assets/images/locationBlack.png";
 import CourtsBar from "./CourtsBar";
 import coinWhite from "../assets/images/coinWhite.png";
 import { useLocation } from "react-router-dom";
 import { useHistory } from "react-router-dom";
+import { getFirestore, collection, addDoc, getDocs } from "firebase/firestore";
+import { AuthContext } from "../Auth";
+
+class Booking {
+  constructor(place_name, court_name, location, slots, total_amount, email) {
+    this.place_name = place_name;
+    this.court_name = court_name;
+    this.location = location;
+    this.slots = slots;
+    this.total_amount = total_amount;
+    this.email = email;
+  }
+}
 
 function CourtsLocations() {
   //For Recieving title sent from the previous page
   const location = useLocation();
   const [date, setDate] = useState(new Date()); //sk
   let history = useHistory();
-  const handleClick = () => {
+
+  const { currentUser } = useContext(AuthContext);
+
+  const readData = async () => {
+    var bookingsT = [];
+    const db = getFirestore();
+    const bookingsIns = await getDocs(collection(db, "Bookings"));
+
+    bookingsIns.forEach(doc => {
+      const data = doc.data();
+      const booking = new Booking(
+        data.place_name,
+        data.court_name,
+        data.location,
+        data.slots,
+        data.total_amount,
+        data.email
+      );
+      bookingsT.push(booking);
+    });
+
+    bookingsT = bookingsT.filter(
+      booking => booking.email === currentUser.email
+    );
+    return bookingsT;
+  };
+
+  const handleClick = async () => {
+    const bookings = await readData();
+    const bookingsF = [];
+    bookings.map(booking => {
+      booking.slots.forEach(slot => {
+        bookingsF.push(
+          new Booking(
+            booking.place_name,
+            booking.court_name,
+            booking.location,
+            slot,
+            booking.total_amount,
+            booking.email
+          )
+        );
+      });
+    });
+    console.log(bookingsF);
     history.push({
       pathname: "/current-bookings",
       state: {
-        mail: location.state.mail,
-      },
+        bookings: bookingsF
+      }
     });
   };
   return (
@@ -66,8 +123,8 @@ function Card2(props) {
         place: place.location,
         courts_num: place.courts_num,
         courtsArray: place.courts,
-        date: props.date,
-      },
+        date: props.date
+      }
     });
   };
   return (
