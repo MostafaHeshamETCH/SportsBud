@@ -23,14 +23,60 @@ class Booking {
 }
 
 function BookingCourt() {
+  const { currentUser } = useContext(AuthContext);
   const location = useLocation();
   const data = location.state.courtsArray;
   var count = 0;
   var filteredDay;
   let history = useHistory();
 
-  const bookingBtnClick = () => {
-    history.push("/current-bookings");
+  const readData = async () => {
+    var bookingsT = [];
+    const db = getFirestore();
+    const bookingsIns = await getDocs(collection(db, "Bookings"));
+
+    bookingsIns.forEach(doc => {
+      const data = doc.data();
+      const booking = new Booking(
+        data.place_name,
+        data.court_name,
+        data.location,
+        data.slots,
+        data.total_amount,
+        data.email
+      );
+      bookingsT.push(booking);
+    });
+
+    bookingsT = bookingsT.filter(
+      booking => booking.email === currentUser.email
+    );
+    return bookingsT;
+  };
+
+  const bookingBtnClick = async () => {
+    const bookings = await readData();
+    const bookingsF = [];
+    bookings.map(booking => {
+      booking.slots.forEach(slot => {
+        bookingsF.push(
+          new Booking(
+            booking.place_name,
+            booking.court_name,
+            booking.location,
+            slot,
+            booking.total_amount,
+            booking.email
+          )
+        );
+      });
+    });
+    history.push({
+      pathname: "/current-bookings",
+      state: {
+        bookings: bookingsF
+      }
+    });
   };
   return (
     <div className=" main font-all max-width-auto">
@@ -111,7 +157,6 @@ function Card3(props) {
   var location = props.location;
   var id = props.tg;
   var prices = props.prices;
-  var slot_array = [];
   const filteredDay = props.court.daysAndAvailableHours
     .filter(
       da =>
@@ -140,8 +185,6 @@ function Card3(props) {
   var [currentSelection1, setCurrentSelection1] = useState([]);
   var [currentSelection2, setCurrentSelection2] = useState([]);
   var [currentSelectionFinal, setCurrentSelectionFinal] = useState([]);
-  console.log(currentSelection1);
-  console.log(currentSelection2);
 
   //Assigning the changes in isAvailable to be sent and stored in DB
   // var x = props.court.daysAndAvailableHours.filter(
@@ -206,10 +249,54 @@ function Card3(props) {
   //   return bookings;
   // };
 
+  const readData = async () => {
+    var bookingsT = [];
+    const db = getFirestore();
+    const bookingsIns = await getDocs(collection(db, "Bookings"));
+
+    bookingsIns.forEach(doc => {
+      const data = doc.data();
+      const booking = new Booking(
+        data.place_name,
+        data.court_name,
+        data.location,
+        data.slots,
+        data.total_amount,
+        data.email
+      );
+      bookingsT.push(booking);
+    });
+
+    bookingsT = bookingsT.filter(
+      booking => booking.email === currentUser.email
+    );
+    return bookingsT;
+  };
+
   const handleClick = async e => {
-    console.log(currentUser.email);
     writeData();
-    history.push("/current-bookings");
+    const bookings = await readData();
+    const bookingsF = [];
+    bookings.map(booking => {
+      booking.slots.forEach(slot => {
+        bookingsF.push(
+          new Booking(
+            booking.place_name,
+            booking.court_name,
+            booking.location,
+            slot,
+            booking.total_amount,
+            booking.email
+          )
+        );
+      });
+    });
+    history.push({
+      pathname: "/current-bookings",
+      state: {
+        bookings: bookingsF
+      }
+    });
   };
 
   return (
