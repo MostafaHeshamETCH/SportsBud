@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import NavBarOneBtn from "./NavBarOneBtn";
 import tennis from "../assets/images/tennis.png";
 import football from "../assets/images/football.png";
@@ -8,6 +8,18 @@ import volley from "../assets/images/volley.png";
 import handball from "../assets/images/handball.png";
 import { useHistory } from "react-router-dom";
 import { getFirestore, collection, addDoc, getDocs } from "firebase/firestore";
+import { AuthContext } from "../Auth";
+
+class Booking {
+  constructor(place_name, court_name, location, slots, total_amount, email) {
+    this.place_name = place_name;
+    this.court_name = court_name;
+    this.location = location;
+    this.slots = slots;
+    this.total_amount = total_amount;
+    this.email = email;
+  }
+}
 
 class Place {
   constructor(name, type, pricePerHour, location, courts, courts_num) {
@@ -48,22 +60,73 @@ function SportsTypeChoice(props) {
     { id: 3, title: "PADDLE", nocourts: "5 COURTS", img: paddle },
     { id: 4, title: "SQUASH", nocourts: "12 COURTS", img: squash },
     { id: 5, title: "VOLLEY", nocourts: "7 COURTS", img: volley },
-    { id: 6, title: "HANDBALL", nocourts: "9 COURTS", img: handball },
+    { id: 6, title: "HANDBALL", nocourts: "9 COURTS", img: handball }
   ]);
   let history = useHistory();
 
   const bookingBtnClick = () => {
     history.push({
+      pathname: "/current-bookings"
+    });
+  };
+
+  const { currentUser } = useContext(AuthContext);
+
+  const readData = async () => {
+    var bookingsT = [];
+    const db = getFirestore();
+    const bookingsIns = await getDocs(collection(db, "Bookings"));
+
+    bookingsIns.forEach(doc => {
+      const data = doc.data();
+      const booking = new Booking(
+        data.place_name,
+        data.court_name,
+        data.location,
+        data.slots,
+        data.total_amount,
+        data.email
+      );
+      bookingsT.push(booking);
+    });
+
+    bookingsT = bookingsT.filter(
+      booking => booking.email === currentUser.email
+    );
+    return bookingsT;
+  };
+
+  const handleClick2 = async () => {
+    const bookings = await readData();
+    const bookingsF = [];
+    bookings.map(booking => {
+      booking.slots.forEach(slot => {
+        bookingsF.push(
+          new Booking(
+            booking.place_name,
+            booking.court_name,
+            booking.location,
+            slot,
+            booking.total_amount,
+            booking.email
+          )
+        );
+      });
+    });
+    history.push({
       pathname: "/current-bookings",
+      state: {
+        bookings: bookingsF
+      }
     });
   };
 
   return (
     <div className="main font-all max-width-auto">
-      <NavBarOneBtn btnTxt="BOOKINGS" clickMe={bookingBtnClick} />
+      <NavBarOneBtn btnTxt="BOOKINGS" clickMe={handleClick2} />
       <h2 className="choose-title">Please choose a type</h2>
       <div className="wrapperr">
-        {myArray2.map((record) => {
+        {myArray2.map(record => {
           return (
             <div key={record.id} className="flex-boxx">
               <Card record={record} />
@@ -79,76 +142,76 @@ function Card(props) {
   const all_available_times = [
     {
       slot_time: "8:00 AM to 9:00 AM",
-      is_available: true,
+      is_available: true
     },
     {
       slot_time: "9:00 AM to 10:00 AM",
-      is_available: true,
+      is_available: true
     },
     {
       slot_time: "10:00 AM to 11:00 AM",
-      is_available: true,
+      is_available: true
     },
     {
       slot_time: "11:00 AM to 12:00 PM",
-      is_available: true,
+      is_available: true
     },
     {
       slot_time: "12:00 PM to 1:00 PM",
-      is_available: true,
+      is_available: true
     },
     {
       slot_time: "1:00 PM to 2:00 PM",
-      is_available: true,
+      is_available: true
     },
     {
       slot_time: "2:00 PM to 3:00 PM",
-      is_available: true,
+      is_available: true
     },
     {
       slot_time: "3:00 PM to 4:00 PM",
-      is_available: true,
+      is_available: true
     },
     {
       slot_time: "4:00 PM to 5:00 PM",
-      is_available: true,
+      is_available: true
     },
     {
       slot_time: "5:00 PM to 6:00 PM",
-      is_available: true,
+      is_available: true
     },
     {
       slot_time: "6:00 PM to 7:00 PM",
-      is_available: true,
+      is_available: true
     },
     {
       slot_time: "7:00 PM to 8:00 PM",
-      is_available: true,
+      is_available: true
     },
     {
       slot_time: "8:00 PM to 9:00 PM",
-      is_available: true,
+      is_available: true
     },
     {
       slot_time: "9:00 PM to 10:00 PM",
-      is_available: true,
+      is_available: true
     },
     {
       slot_time: "10:00 PM to 11:00 PM",
-      is_available: true,
+      is_available: true
     },
     {
       slot_time: "11:00 PM to 12:00 AM",
-      is_available: true,
+      is_available: true
     },
     {
       slot_time: "12:00 AM to 1:00 AM",
-      is_available: true,
+      is_available: true
     },
     {
       slot_time: "1:00 AM to 2:00 AM",
-      is_available: true,
-    },
+      is_available: true
+    }
   ];
   const all_days_and_times = [
     { date: "12 / 9 / 2021", available_hours: all_available_times },
@@ -167,7 +230,7 @@ function Card(props) {
     { date: "25 / 9 / 2021", available_hours: all_available_times },
     { date: "26 / 9 / 2021", available_hours: all_available_times },
     { date: "27 / 9 / 2021", available_hours: all_available_times },
-    { date: "28 / 9 / 2021", available_hours: all_available_times },
+    { date: "28 / 9 / 2021", available_hours: all_available_times }
   ];
 
   const writeData = async () => {
@@ -181,18 +244,18 @@ function Card(props) {
         courts: [
           {
             id: 1,
-            daysAndAvailableHours: all_days_and_times,
+            daysAndAvailableHours: all_days_and_times
           },
           {
             id: 2,
-            daysAndAvailableHours: all_days_and_times,
+            daysAndAvailableHours: all_days_and_times
           },
           {
             id: 3,
-            daysAndAvailableHours: all_days_and_times,
-          },
+            daysAndAvailableHours: all_days_and_times
+          }
         ],
-        courts_num: 3,
+        courts_num: 3
       });
       console.log("Document written with ID: ", docRef.id);
     } catch (e) {
@@ -207,14 +270,14 @@ function Card(props) {
         courts: [
           {
             id: 1,
-            daysAndAvailableHours: all_days_and_times,
+            daysAndAvailableHours: all_days_and_times
           },
           {
             id: 2,
-            daysAndAvailableHours: all_days_and_times,
-          },
+            daysAndAvailableHours: all_days_and_times
+          }
         ],
-        courts_num: 2,
+        courts_num: 2
       });
       console.log("Document written with ID: ", docRef.id);
     } catch (e) {
@@ -229,10 +292,10 @@ function Card(props) {
         courts: [
           {
             id: 1,
-            daysAndAvailableHours: all_days_and_times,
-          },
+            daysAndAvailableHours: all_days_and_times
+          }
         ],
-        courts_num: 1,
+        courts_num: 1
       });
       console.log("Document written with ID: ", docRef.id);
     } catch (e) {
@@ -247,10 +310,10 @@ function Card(props) {
         courts: [
           {
             id: 1,
-            daysAndAvailableHours: all_days_and_times,
-          },
+            daysAndAvailableHours: all_days_and_times
+          }
         ],
-        courts_num: 1,
+        courts_num: 1
       });
       console.log("Document written with ID: ", docRef.id);
     } catch (e) {
@@ -265,10 +328,10 @@ function Card(props) {
         courts: [
           {
             id: 1,
-            daysAndAvailableHours: all_days_and_times,
-          },
+            daysAndAvailableHours: all_days_and_times
+          }
         ],
-        courts_num: 1,
+        courts_num: 1
       });
       console.log("Document written with ID: ", docRef.id);
     } catch (e) {
@@ -283,10 +346,10 @@ function Card(props) {
         courts: [
           {
             id: 1,
-            daysAndAvailableHours: all_days_and_times,
-          },
+            daysAndAvailableHours: all_days_and_times
+          }
         ],
-        courts_num: 1,
+        courts_num: 1
       });
       console.log("Document written with ID: ", docRef.id);
     } catch (e) {
@@ -300,14 +363,14 @@ function Card(props) {
     const placesArray = [];
     const db = getFirestore();
     const placesIns = await getDocs(collection(db, "Places"));
-    placesIns.forEach((doc) => {
+    placesIns.forEach(doc => {
       const data = doc.data();
       const courts = [];
-      data.courts.forEach((court) => {
+      data.courts.forEach(court => {
         const datesAndSlots = [];
-        court.daysAndAvailableHours.forEach((da) => {
+        court.daysAndAvailableHours.forEach(da => {
           const slots = [];
-          da.available_hours.forEach((ah) => {
+          da.available_hours.forEach(ah => {
             slots.push(new Slot(ah.slot_time, ah.is_available));
           });
           datesAndSlots.push(new DaysAndAvailableHours(da.date, slots));
@@ -330,7 +393,7 @@ function Card(props) {
   const { img, title, nocourts } = props.record;
 
   //Rendering Courts locations page and pass the title
-  const handleClick = async (e) => {
+  const handleClick = async e => {
     const placesArray = await readData();
     // writeData();
     if (title === "PADDLE") {
@@ -339,8 +402,8 @@ function Card(props) {
         state: {
           title: "Paddle Courts",
 
-          places: placesArray.filter((place) => place.type === "Paddle"),
-        },
+          places: placesArray.filter(place => place.type === "Paddle")
+        }
       });
     }
     if (title === "FOOTBALL") {
@@ -348,8 +411,8 @@ function Card(props) {
         pathname: "/courts-locations",
         state: {
           title: "Football Courts",
-          places: placesArray.filter((place) => place.type === "Football"),
-        },
+          places: placesArray.filter(place => place.type === "Football")
+        }
       });
     }
     if (title === "VOLLEY") {
@@ -357,8 +420,8 @@ function Card(props) {
         pathname: "/courts-locations",
         state: {
           title: "Volley Courts",
-          places: placesArray.filter((place) => place.type === "Volley"),
-        },
+          places: placesArray.filter(place => place.type === "Volley")
+        }
       });
     }
     if (title === "TENNIS") {
@@ -366,8 +429,8 @@ function Card(props) {
         pathname: "/courts-locations",
         state: {
           title: "Tennis Courts",
-          places: placesArray.filter((place) => place.type === "Tennis"),
-        },
+          places: placesArray.filter(place => place.type === "Tennis")
+        }
       });
     }
     if (title === "SQUASH") {
@@ -375,8 +438,8 @@ function Card(props) {
         pathname: "/courts-locations",
         state: {
           title: "Squash Courts",
-          places: placesArray.filter((place) => place.type === "Squash"),
-        },
+          places: placesArray.filter(place => place.type === "Squash")
+        }
       });
     }
     if (title === "HANDBALL") {
@@ -384,8 +447,8 @@ function Card(props) {
         pathname: "/courts-locations",
         state: {
           title: "Handball Courts",
-          places: placesArray.filter((place) => place.type === "Handball"),
-        },
+          places: placesArray.filter(place => place.type === "Handball")
+        }
       });
     }
   };

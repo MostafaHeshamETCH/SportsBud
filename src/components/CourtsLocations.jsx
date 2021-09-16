@@ -68,7 +68,6 @@ function CourtsLocations() {
         );
       });
     });
-    console.log(bookingsF);
     history.push({
       pathname: "/current-bookings",
       state: {

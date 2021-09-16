@@ -3,7 +3,6 @@ import ClockImg from "../assets/images/clock.png";
 import LocationImg from "../assets/images/location.png";
 
 function BookingCard(props) {
-  console.log(props.slot);
   return (
     <div className="bookingContainer font-all">
       <div className="bookingName">
